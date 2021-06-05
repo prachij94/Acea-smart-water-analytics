@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+.bg {
+  /* The image used */
+  background-image: url("https://img.freepik.com/free-photo/water-splashes-with-copy-space_143092-563.jpg?size=626&ext=jpg");
+
+  /* Full height */
+  height: 100%; 
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.button {
+  background-color: #008CBA;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  
+}
+.button:hover {
+  background-color: #0335fc;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.8), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+</style>
+</head>
+<body>
+
+<div class="bg">
+<form action="/predict" method="POST">
+  <br>
+  <h1 style="color:blue;">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;WELCOME TO ACEA SMART WATER ANALYTICS PREDICTION</h1>
+  <b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Enter values only for the relevant fields along with the sign and leave others blank as per the water body type i.e. Aquifers, Lakes, Rivers, Springs</b>
+  <span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Valid for AQUIFERS - Rainfall, Temperature, Volume, Hydrometry</span><br>
+  <span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Valid for LAKES - Rainfall, Temperature</span><br>
+  <span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Valid for RIVERS - Rainfall, Temperature</span><br>
+  <span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Valid for SPRINGS - Rainfall, Temperature, Depth</span>
+  <br>
+  <br>
+  <b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</b>
+  <input type="radio" id="aquifer" name="waterbody" value="aquifer" checked="checked">
+	<label for="aquifer">Aquifer</label>
+	<input type="radio" id="lake" name="waterbody" value="lake">
+	<label for="lake">Lake</label>
+	<input type="radio" id="river" name="waterbody" value="river">
+	<label for="river">River</label>
+	<input type="radio" id="spring" name="waterbody" value="spring">
+	<label for="spring">Spring</label>
+  <br>
+  <br>
+  <b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</b>
+  <label for="rainfall">&emsp;&emsp;&emsp;&emsp;&emsp;Rainfall (mm):&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label>
+  
+  <label for="temp">Temperature (°C):</label><br>
+  <b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</b>
+  <input type="text" id="rainfall" name="rainfall">
+  <b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</b>
+  <input type="text" id="temp" name="temp"><br>
+  <br>
+  <b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</b>
+  <label for="volume">&emsp;&emsp;&emsp;&emsp;&emsp;Volume (cubic meters):&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label>
+  
+  <label for="volume">Depth to Groundwater (meters):</label><br>
+  <b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</b>
+  <input type="text" id="volume" name="volume">
+  <b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</b>
+  <input type="text" id="depth" name="depth"><br>
+  <br>
+  <b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</b>
+  <label for="hydro">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Hydrometry (meters):</label><br>
+  <b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</b>
+  <input type="text" id="hydro" name="hydro"><br>
+  <br>
+  <b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</b>
+  <label for="flow">&emsp;&emsp;&emsp;&emsp;Flow Rate (litres/sec):&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label>
+  
+  <label for="lakelevel">Lake Level (meters):</label><br>
+  <b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</b>
+  <input type="text" id="flow" name="flow">
+  <b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</b>
+  <input type="text" id="lakelevel" name="lakelevel"><br>
+
+<br>
+<b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</b>
+<input class="button" type="submit" value="Predict">
+<br>
+<div id="result_div">
+<h2 style="color:slateblue;">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;{{ waterbody }} </h2>
+<b style="color:darkblue;font-size:150%">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; {{ target1 }} </b><b style="color:red;font-size:150%"> {{ result1 }}</b><br>
+<b style="color:darkblue;font-size:150%">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;{{ target2 }}</b><b style="color:red;font-size:150%"> {{ result2 }}</b>
+</div>
+</form>
+</div>
+
+</body>
+</html>
